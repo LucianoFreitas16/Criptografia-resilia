@@ -1,0 +1,28 @@
+body{
+    padding: 0%;
+    margin: 0%;
+   
+}
+.quarteirao{
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 8, 15);
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-weight: 100;
+}
+.input{
+    border: 2px solid rgb(207, 10, 10);
+    border-radius:10px;
+    color: black;
+    height: 100px;
+    width: 50%;
+  
+}
+input[type=text] {
+    transition: width 0.8s ease-in-out;
+  }
+  
+  input[type=text]:focus {
+    width: 100%;
+  }
