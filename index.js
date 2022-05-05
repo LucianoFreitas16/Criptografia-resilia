@@ -1,47 +1,70 @@
-var cod = document.querySelector('#codificar');
-var decod = document.querySelector('#decod');
-var enter = document.querySelector('#msg');
-var exit = document.querySelector('#return');
-var sc = document.querySelector('#selection')
+var codifica = document.querySelector('#codificar');
+var saiMsg = document.querySelector('#return');
+var codigo = document.querySelector('#escolha')
 var bt = document.querySelector('#botaoCod');
+var incrs = document.querySelector('#incremento');
+var decodifica = document.querySelector('#decod');
+var entraMsg = document.querySelector('#msg');
 
 
-
-cod.addEventListener("click", function(){
-  bt.innerText = "Codificar Mensagem"
+codifica.addEventListener("click", function(){
+    bt.innerText = "Codificar Mensagem"
 })
 
-decod.addEventListener('click', function(){
-  bt.innerText = "Decodificar Mensagem";
+decodifica.addEventListener('click', function(){
+    bt.innerText = "Decodificar Mensagem";
 })
 
 
-bt.addEventListener('click', (function (s) {
-  s.preventDefault();
-  criptografar(enter.value) 
+codigo.addEventListener('change', function(){
+  if (codigo.value == '0' || codigo.value == 'base64') {
+    document.querySelector('.incr').style.display = 'none';
+  } else {
+    document.querySelector('.incr').style.display = 'flex';
+  }
+})
+
+
+bt.addEventListener('click', (function (noRecarg) {
+  noRecarg.preventDefault();
+  criptografar(entraMsg.value) 
 }))
 
 function criptografar(texto) {
-  if (sc.value == 'base64' && bt.innerText == 'Codificar Mensagem') {
+  if (codigo.value == 'base64' && bt.innerText == 'Codificar Mensagem') {
     var resultCripto64 = btoa(texto);
-    exit.value = resultCripto64;
-  } else if (sc.value == 'cifraDeCesar' && bt.innerText == 'Codificar Mensagem') {
-    var resultCesar = codificarCesar(enter.value);
-    exit.value = resultCesar;
-  } else if (sc.value == 'base64' && bt.innerText == 'Decodificar Mensagem') {
+    saiMsg.value = resultCripto64;
+  } else if (codigo.value == 'cifraDeCesar' && bt.innerText == 'Codificar Mensagem') {
+    var resultCesar = cifraDeCesar(entraMsg.value, +incrs.value);
+    saiMsg.value = resultCesar;
+  } else if (codigo.value == 'base64' && bt.innerText == 'Decodificar Mensagem') {
     var resultDecripto64 = atob(texto) 
-   exit.value = resultDecripto64;
-  } else if (sc.value == 'cifraDeCesar' && bt.innerText == 'Decodificar Mensagem') {
-    var resultDecriptoCesar = decodificarCesar(enter.value);
-    exit.value = resultDecriptoCesar;
+    saiMsg.value = resultDecripto64;
+  } else if (codigo.value == 'cifraDeCesar' && bt.innerText == 'Decodificar Mensagem') {
+    var resultDecriptoCesar = cesarDecifrado(entraMsg.value, +incrs.value);
+    saiMsg.value = resultDecriptoCesar;
   } 
-}
+  }
 
-sc.addEventListener('change', function(){
-    if (sc.value == '0' || sc.value == 'base64') {
-      document.querySelector('.incr').style.display = 'none';
-    } else {
-      document.querySelector('.incr').style.display = 'flex';
+function cifraDeCesar(texto, increment) {
+var entrada = texto.split('');
+var numeroCesar = [];
+var retornoCesar = [];
+for (i=0; i < entrada.length ; i++) {
+  if(entrada[i].charCodeAt() > 64 && entrada[i].charCodeAt() < 91) {
+    var aplicaCifra = (entrada[i].charCodeAt() - 65 + increment) % 26;
+    numeroCesar.push(aplicaCifra + 65);
+  } else if (entrada[i].charCodeAt() >= 97 && entrada[i].charCodeAt() <= 122) {
+    aplicaCifra = (entrada[i].charCodeAt() - 97 + increment) % 26;
+    numeroCesar.push(aplicaCifra + 97);
+  } else {
+    numeroCesar.push(entrada[i].charCodeAt())
     }
-  })
-  
+  }
+
+  for (var j = 0; j < numeroCesar.length ; j++) {
+          retornoCesar.push(String.fromCharCode(numeroCesar[j]))
+      }
+      return retornoCesar.join('');
+    
+}
