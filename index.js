@@ -30,21 +30,6 @@ bt.addEventListener('click', (function (noRecarg) {
   criptografar(entraMsg.value) 
 }))
 
-function criptografar(texto) {
-  if (codigo.value == 'base64' && bt.innerText == 'Codificar Mensagem') {
-    var resultCripto64 = btoa(texto);
-    saiMsg.value = resultCripto64;
-  } else if (codigo.value == 'cifraDeCesar' && bt.innerText == 'Codificar Mensagem') {
-    var resultCesar = cifraDeCesar(entraMsg.value, +incrs.value);
-    saiMsg.value = resultCesar;
-  } else if (codigo.value == 'base64' && bt.innerText == 'Decodificar Mensagem') {
-    var resultDecripto64 = atob(texto) 
-    saiMsg.value = resultDecripto64;
-  } else if (codigo.value == 'cifraDeCesar' && bt.innerText == 'Decodificar Mensagem') {
-    var resultDecriptoCesar = cesarDecifrado(entraMsg.value, +incrs.value);
-    saiMsg.value = resultDecriptoCesar;
-  } 
-  }
 
 function cifraDeCesar(texto, increment) {
 var entrada = texto.split('');
