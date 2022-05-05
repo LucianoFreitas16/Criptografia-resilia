@@ -28,9 +28,9 @@ function criptografar(texto) {
   } else if (sc.value == 'cifraDeCesar' && bt.innerText == 'Codificar Mensagem') {
     var resultCesar = codificarCesar(enter.value);
     exit.value = resultCesar;
-    } else if (sc.value == 'base64' && bt.innerText == 'Decodificar Mensagem') {
-      var resultDecripto64 = atob(texto) 
-    exit.value = resultDecripto64;
+  } else if (sc.value == 'base64' && bt.innerText == 'Decodificar Mensagem') {
+    var resultDecripto64 = atob(texto) 
+   exit.value = resultDecripto64;
   } else if (sc.value == 'cifraDeCesar' && bt.innerText == 'Decodificar Mensagem') {
     var resultDecriptoCesar = decodificarCesar(enter.value);
     exit.value = resultDecriptoCesar;
