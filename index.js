@@ -6,7 +6,6 @@ var incrs = document.querySelector('#incremento');
 var decodifica = document.querySelector('#decod');
 var entraMsg = document.querySelector('#msg');
 
-
 codifica.addEventListener("click", function(){
     bt.innerText = "Codificar Mensagem"
 })
@@ -14,7 +13,6 @@ codifica.addEventListener("click", function(){
 decodifica.addEventListener('click', function(){
     bt.innerText = "Decodificar Mensagem";
 })
-
 
 codigo.addEventListener('change', function(){
   if (codigo.value == '0' || codigo.value == 'base64') {
@@ -24,12 +22,10 @@ codigo.addEventListener('change', function(){
   }
 })
 
-
 bt.addEventListener('click', (function (noRecarg) {
   noRecarg.preventDefault();
   criptografar(entraMsg.value) 
 }))
-
 function criptografar(texto) {
   if (codigo.value == 'base64' && bt.innerText == 'Codificar Mensagem') {
     var resultCripto64 = btoa(texto);
@@ -45,26 +41,46 @@ function criptografar(texto) {
     saiMsg.value = resultDecriptoCesar;
   } 
   }
-
-function cifraDeCesar(texto, increment) {
-var entrada = texto.split('');
-var numeroCesar = [];
-var retornoCesar = [];
-for (i=0; i < entrada.length ; i++) {
-  if(entrada[i].charCodeAt() > 64 && entrada[i].charCodeAt() < 91) {
-    var aplicaCifra = (entrada[i].charCodeAt() - 65 + increment) % 26;
-    numeroCesar.push(aplicaCifra + 65);
-  } else if (entrada[i].charCodeAt() >= 97 && entrada[i].charCodeAt() <= 122) {
-    aplicaCifra = (entrada[i].charCodeAt() - 97 + increment) % 26;
-    numeroCesar.push(aplicaCifra + 97);
+function cifraDeCesar(texto, incrementa) {
+var entra = texto.split('');
+var nc = [];
+var rc = [];
+for (i=0; i < entra.length ; i++) {
+  if(entra[i].charCodeAt() > 64 && entra[i].charCodeAt() < 91) {
+    var aplicaCifra = (entra[i].charCodeAt() - 65 + incrementa) % 26;
+    nc.push(aplicaCifra + 65);
+  } else if (entra[i].charCodeAt() >= 97 && entra[i].charCodeAt() <= 122) {
+    aplicaCifra = (entra[i].charCodeAt() - 97 + incrementa) % 26;
+    nc.push(aplicaCifra + 97);
   } else {
-    numeroCesar.push(entrada[i].charCodeAt())
+    nc.push(entra[i].charCodeAt())
     }
   }
-
-  for (var j = 0; j < numeroCesar.length ; j++) {
-          retornoCesar.push(String.fromCharCode(numeroCesar[j]))
+  for (var j = 0; j < nc.length ; j++) {
+    rc.push(String.fromCharCode(nc[j]))
       }
-      return retornoCesar.join('');
+      return rc.join('');
     
 }
+function cesarDecifrado(texto, incrementa) {
+  var mensagem = texto.split('')
+  var msgCodificada = []
+  var cn = []
+
+  for (let i = 0; i < mensagem.length; i++) {
+      if (mensagem[i].charCodeAt() >= 65 && mensagem[i].charCodeAt() <= 90) {
+          let testando = ((mensagem[i].charCodeAt()) - 65 - incrementa) % 26
+          cn.push((testando < 0 ? testando + 26 : testando) + 65)
+      } else if (mensagem[i].charCodeAt() >= 97 && mensagem[i].charCodeAt() <= 122) {
+          let testando = ((mensagem[i].charCodeAt()) - 97 - incrementa) % 26
+          cn.push((testando < 0 ? testando + 26 : testando) + 97)
+      } else {
+        cn.push(mensagem[i].charCodeAt())
+      }
+  }
+  for (var j = 0; cn.length > j; j++) {
+    msgCodificada.push(String.fromCharCode(cn[j]))
+  }
+  return msgCodificada.join('')
+}
+
