@@ -1,28 +1,68 @@
-body{
+body {
+    background-image: url(https://36618.cdn.simplo7.net/static/36618/sku/tecidos-tecidos-nacionais-camuflado-floresta-0-50cm-x-1-50m--p-1594231691320.jpeg);
+    font-size: 25px;
     padding: 0%;
-    margin: 0%;
-   
-}
-.quarteirao{
+    border: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+h1 {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-left: 100px;
+  }
+  
+  section {
     display: flex;
-    justify-content: center;
-    color: rgb(0, 8, 15);
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: italic;
-    font-weight: 100;
-}
-.input{
-    border: 2px solid rgb(207, 10, 10);
-    border-radius:10px;
-    color: black;
-    height: 100px;
-    width: 50%;
-  
-}
-input[type=text] {
-    transition: width 0.8s ease-in-out;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    margin-left: 450px;
   }
   
-  input[type=text]:focus {
-    width: 100%;
+  .incr {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
   }
+  
+  #return {
+     width: 500px;
+    border: 5px solid black;
+  }
+  
+  #msg {
+    width: 500px;
+    border: 5px solid black;
+    }
+  
+  #inc {
+    border: 3px solid black;
+    margin-top: 5px;
+  }
+  .myButton {
+	background:linear-gradient(to bottom, #009929 5%, #020500 100%);
+	background-color:#009929;
+	border-radius:20px;
+	border:1px solid #169c26;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:12px 21px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #004702;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #020500 5%, #009929 100%);
+	background-color:#020500;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}

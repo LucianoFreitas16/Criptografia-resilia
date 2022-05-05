@@ -1,33 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criptografia</title>
     <link rel="stylesheet" href="index.css">
-    <script defer src="index.js"></script>
+    <title>Codifica</title>
 </head>
 
 <body>
+    <header>
+        <h1>Criptografia</h1>
+    </header>
 
-    <div class="quarteirao">
-        <form>
-            <H1>Escolha sua codificação</H1>
-            <label>Cifra de César<input type="radio" class="radio" id="cesarbt" name="rdbt"></label>
-            <label>Base 64<input type="radio" class="radio" id="base64bt" name="rdbt"></label>
-            <br>
-            <h3>Insira o incremento</h3>
-            <input type="number" name="" id="" class="input1">
-            <br>
-            <h3>Criptografe sua mensagem</h3>
-            <input type="text" name="" id="" class="input">
-            <br>
-            <h3>Mensagem criptografada</h3>
-            <input type="text" name="" id="" class="input">
-        </form>
-    </div>
+    <section>
+       
+        <select name="selection" id="selection">
+            <option value="base64" id="64">Base64</option>
+            <option value="cifraDeCesar" id="cesar">Cifra de César</option>
+            
+        </select>
+
+        <div class="mens">
+            <textarea id="msg" placeholder="Mensagem" rows="10"></textarea>
+        </div>
+
+        <div class="radioButton">
+            <div>
+                <input type="radio" name="rdbt" value="codificar" id="codificar">
+                <label for="codificar">
+                    Codificar
+                </label>
+            </div>
+
+            <div>
+                <input type="radio" name="rdbt" value="decod" id="decod">
+                <label for="codif">
+                    Decodificar
+                </label>
+            </div>
+
+            <div class="incr">
+
+                <input type="text" name="incremento" id="inc">
+            </div>
+        </div>
+
+        <button id="botaoCod" class="myButton" type="submit">CODIFICAR/DESCODIFICAR</button>
+
+        <div class="mens">
+            <textarea id="return" placeholder="Mensagem codificada" rows="10"></textarea>
+        </div>
+    </section>
+
+    <script src="index.js"></script>
 </body>
 
 </html>
